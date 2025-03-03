@@ -29,7 +29,16 @@ public class GreetingService {
         return greetingRepository.findAll();
     }
 
-
+    // Method to update an existing greeting message
+    public Greeting updateGreeting(Long id, Greeting newGreeting) {
+        Optional<Greeting> existingGreeting = greetingRepository.findById(id);
+        if (existingGreeting.isPresent()) {
+            Greeting greeting = existingGreeting.get();
+            greeting.setMessage(newGreeting.getMessage());  // Update message
+            return greetingRepository.save(greeting);  // Save updated greeting
+        }
+        return null;  // Return null if ID not found
+    }
 
     public String getPersonalizedGreeting(String firstName, String lastName) {
         if (firstName != null && lastName != null) {

@@ -35,6 +35,12 @@ public class GreetingController {
         return greetingService.getAllGreetings();
     }
 
+    // PUT request to update a greeting by ID
+    @PutMapping("/update/{id}")
+    public Greeting updateGreeting(@PathVariable Long id, @RequestBody Greeting newGreeting) {
+        return greetingService.updateGreeting(id, newGreeting);
+    }
+
     @GetMapping("/personalized")
     public String getPersonalizedGreeting(@RequestParam(required = false) String firstName,
                                           @RequestParam(required = false) String lastName) {
