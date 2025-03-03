@@ -41,6 +41,17 @@ public class GreetingController {
         return greetingService.updateGreeting(id, newGreeting);
     }
 
+    // DELETE request to remove a greeting by ID
+    @DeleteMapping("/delete/{id}")
+    public String deleteGreeting(@PathVariable Long id) {
+        boolean isDeleted = greetingService.deleteGreeting(id);
+        if (isDeleted) {
+            return "Greeting with ID " + id + " deleted successfully.";
+        } else {
+            return "Greeting with ID " + id + " not found.";
+        }
+    }
+
     @GetMapping("/personalized")
     public String getPersonalizedGreeting(@RequestParam(required = false) String firstName,
                                           @RequestParam(required = false) String lastName) {

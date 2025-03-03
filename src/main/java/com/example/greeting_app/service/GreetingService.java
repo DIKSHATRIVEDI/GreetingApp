@@ -40,6 +40,15 @@ public class GreetingService {
         return null;  // Return null if ID not found
     }
 
+    // Method to delete a greeting message by ID
+    public boolean deleteGreeting(Long id) {
+        if (greetingRepository.existsById(id)) {
+            greetingRepository.deleteById(id);
+            return true;  // Return true if deletion was successful
+        }
+        return false;  // Return false if ID was not found
+    }
+
     public String getPersonalizedGreeting(String firstName, String lastName) {
         if (firstName != null && lastName != null) {
             return "Hello, " + firstName + " " + lastName + "!";
