@@ -5,6 +5,7 @@ import com.example.greeting_app.repository.GreetingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -23,6 +24,12 @@ public class GreetingService {
         Optional<Greeting> greeting = greetingRepository.findById(id);
         return greeting.orElse(null); // Returns null if not found
     }
+
+    public List<Greeting> getAllGreetings() {
+        return greetingRepository.findAll();
+    }
+
+
 
     public String getPersonalizedGreeting(String firstName, String lastName) {
         if (firstName != null && lastName != null) {
