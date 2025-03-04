@@ -7,7 +7,7 @@ import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@RestController //http://localhost:8080/auth/register
 @RequestMapping("/auth")
 public class AuthUserController {
 
